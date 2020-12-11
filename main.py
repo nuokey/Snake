@@ -3,7 +3,7 @@ from random import randint as rnd
 
 class Snake():
     def __init__(self):
-        self.body = [[90, 50], [70, 50], [50, 50]]
+        self.body = [[90, 50]]
         self.texture = pygame.image.load('snake.png')
         self.direction = [1, 0]
 
@@ -32,7 +32,7 @@ class Snake():
             self.body[0][1] = size[1]
 
     def body_check(self):
-        for i in range(2, len(self.body)):
+        for i in range(1, len(self.body)):
             try:
                 x = abs(self.body[i][0] - self.body[0][0])
                 y = abs(self.body[i][1] - self.body[0][1])
@@ -59,6 +59,7 @@ class Apple():
         if abs(self.x - snake.body[0][0]) <= 30 and abs(self.y - snake.body[0][1]) <= 30:
             self.create()
             snake.body.append([self.x, self.y])
+            snake.body.append([self.x, self.y])
 
     def draw(self):
         screen.blit(self.texture, (self.x, self.y))
@@ -68,7 +69,7 @@ snake = Snake()
 apple = Apple()
 
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption('Snake | by NuoKey')
+pygame.display.set_caption('Snake | by NuoKey | ver 0.1')
 pygame.init()
 clock = pygame.time.Clock()
 done = False
