@@ -64,6 +64,12 @@ class Apple():
     def draw(self):
         screen.blit(self.texture, (self.x, self.y))
 
+def game():
+    snake.update()
+    snake.draw()
+    apple.collide()
+    apple.draw()
+
 size = (1280, 720)
 snake = Snake()
 apple = Apple()
@@ -96,10 +102,8 @@ while not done:
                 if snake.direction != [-1, 0]:
                     snake.direction = [1, 0]
 
-    snake.update()
-    snake.draw()
-    apple.collide()
-    apple.draw()
+    if game:
+        game()
 
     pygame.display.flip()
 pygame.quit()
